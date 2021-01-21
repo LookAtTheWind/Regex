@@ -52,6 +52,10 @@ void Regex::setTextColor(int pos, const QString &text)
 // Regex match
 void Regex::on_match_clicked()
 {
+    QString strExpression = ui->expression->text();
+    if (strExpression.isEmpty())
+        return;
+
     // set color of buffer
     ui->buffer->selectAll();
     ui->buffer->setTextBackgroundColor(Qt::white);
@@ -59,10 +63,6 @@ void Regex::on_match_clicked()
     ui->result->clear();
 
     // get the content of lineEdit
-    QString strExpression = ui->expression->text();
-    if (strExpression.isEmpty())
-        return;
-
     QRegExp reg;
     reg.setPattern(strExpression);
 
